@@ -10,7 +10,7 @@ services:
       - appnet
 
   frontend:
-    image: sumit202/assignment-frontend:v2
+    image: sumit202/assignment-frontend:v1
     container_name: frontend
     depends_on:
       - backend
