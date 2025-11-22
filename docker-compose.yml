@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    image: sumit202/assignment-backend:v1
+    container_name: backend
+    ports:
+      - "8000:8000"
+    networks:
+      - appnet
+
+  frontend:
+    image: sumit202/assignment-frontend:v2
+    container_name: frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: "http://backend:8000"
+    ports:
+      - "3000:3000"
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
